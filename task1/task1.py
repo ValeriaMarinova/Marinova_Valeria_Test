@@ -1,21 +1,25 @@
-# 1 задание
+import sys
+
 def circular_array_path(n, m):
+    circular_array = list(range(1, n + 1))
     path = []
-    current_position = 0
+    current_index = 0
 
     while True:
-        path.append(current_position + 1)
 
-        current_position = (current_position + m) % n
-
-        if current_position == 0:
+        path.append(circular_array[current_index])
+        
+        current_index = (current_index + m - 1) % n
+        
+        if current_index == 0:
             break
-
+    
     return path
 
-n = int(input("Введите n: "))
-m = int(input("Введите m: "))
-
-result = circular_array_path(n, m)
-
-print("".join(map(str, result)))
+if len(sys.argv) != 3:
+    print("ошибка")
+else:
+    n = int(sys.argv[1])
+    m = int(sys.argv[2])
+    result = circular_array_path(n, m)
+    print("полученный путь:", result)
