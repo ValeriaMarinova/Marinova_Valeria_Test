@@ -1,3 +1,4 @@
+import sys
 def min_moves_to_equal_elements(nums):
     nums.sort()
 
@@ -6,6 +7,10 @@ def min_moves_to_equal_elements(nums):
     return sum(abs(num - median) for num in nums)
 
 
-nums = [1, 2, 9, 2, 6]
+# nums = [1, 10, 2, 9]
+
+with open(sys.argv[1]) as file:
+    nums = list(map(int, file))
+
 result = min_moves_to_equal_elements(nums)
 print(f"Минимальное количество ходов: {result}")
